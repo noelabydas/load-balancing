@@ -1,0 +1,25 @@
+{
+  "name": "load-balancing",
+  "version": "1.0.0",
+  "description": "Load balancing in NodeJs &amp; Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonatwork/load-balancing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leonatwork/load-balancing/issues"
+  },
+  "homepage": "https://github.com/leonatwork/load-balancing#readme",
+  "dependencies": {
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "request": "^2.88.2"
+  }
+}
