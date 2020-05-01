@@ -1,0 +1,77 @@
+<div class="main">
+    <a href="/" style="text-decoration: none;">
+        <h1 class="display-4">Load balancing</h1>
+    </a>
+    <hr>
+    <h1 class="display-4" style="font-size: 24px;">Least Connections algorithm</h1>
+    <div id="myLoad" data-load1=<%= load.server1 %> data-load2=<%= load.server2 %> data-load3=<%= load.server3 %>></div>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="row">
+                <div class="col-8">
+                    <div class="chart">
+                        <canvas id="myChart" style="width: 100%; height: 100%;"></canvas>
+
+                        <script>
+                            const load1 = document.getElementById('myLoad').dataset.load1;
+                            const load2 = document.getElementById('myLoad').dataset.load2;
+                            const load3 = document.getElementById('myLoad').dataset.load3;
+
+                            const ctx = document.getElementById('myChart').getContext('2d');
+
+                            const myChart = new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: ['Server 1', 'Server 2', 'Server 3'],
+                                    datasets: [{
+                                        label: '# of Requests',
+                                        data: [load1, load2, load3],
+                                        backgroundColor: [
+                                            'rgba(255, 99, 132, 0.2)',
+                                            'rgba(54, 162, 235, 0.2)',
+
+                                            'rgba(75, 192, 192, 0.2)',
+
+                                        ],
+                                        borderColor: [
+                                            'rgba(255, 99, 132, 1)',
+                                            'rgba(54, 162, 235, 1)',
+
+                                            'rgba(75, 192, 192, 1)'
+
+                                        ],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                min: 0,
+                                                stepSize: 1
+                                            }
+                                        }]
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+                <div class="col-4"> <% if(logs!='1') { %>
+                    <textarea class="form-control" id="lc-logs" rows="10" disabled><%= logs %></textarea>
+                    <% } %></div>
+            </div>
+            <div class="request">
+                <center>
+                    <form action="/my-request-lc" method="GET">
+                        <button type="submit" class="btn btn-primary btn-lg">Send HTTP Request</button>
+                    </form>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var textarea = document.getElementById('lc-logs');
+    textarea.scrollTop = textarea.scrollHeight;
+</script>
