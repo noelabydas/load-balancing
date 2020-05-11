@@ -44,7 +44,7 @@ To run the round robin version
 To run least connection version
 
 ```shell
-   $ node server-ls.js
+   $ node server-lc.js
 ```
 - The app should be up and running at [localhost:8081](http://localhost:8081/)
 - The Least Connection server listens at port 8081, and three other servers run at ports 4000,4001 and 4002
